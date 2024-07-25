@@ -5,7 +5,11 @@ import 'package:news_app/ui/home.dart';
 //import 'package:news_app/ui/home.dart';
 
 void main() {
-  runApp(const ProviderScope(child: MyApp()));
+  runApp(
+    const ProviderScope(
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
