@@ -40,7 +40,7 @@ class HomePage extends ConsumerWidget {
                     );
                   },
                   child: Container(
-                    height: 150,
+                    height: 200,
                     width: double.infinity,
                     decoration: const BoxDecoration(
                       color: Colors.pink,
@@ -52,7 +52,9 @@ class HomePage extends ConsumerWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Image.network(
-                          item.urlToImage,
+                          item.urlToImage.isNotEmpty
+                              ? item.urlToImage
+                              : 'https://via.placeholder.com/150', // Fallback placeholder image
                           fit: BoxFit.cover,
                           height: 100,
                           width: double.infinity,

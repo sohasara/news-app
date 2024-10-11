@@ -22,14 +22,14 @@ class Article {
   factory Article.fromMap(Map<String, dynamic> map) {
     return Article(
       source: map['source']['name'] as String,
-      author: map['author'] as String,
+      author: map['author'] as String? ?? 'Unknown Author',
       title: map['title'] as String,
-      description: map['description'] as String,
+      description: map['description'] as String? ?? 'No description available',
       url: map['url'] as String,
-      urlToImage: map['urlToImage'] as String,
-      publishedAt:
-          DateTime.fromMillisecondsSinceEpoch(map['publishedAt'] as int),
-      content: map['content'] as String,
+      urlToImage:
+          map['urlToImage'] as String? ?? '', // Set default empty string
+      publishedAt: DateTime.parse(map['publishedAt'] as String),
+      content: map['content'] as String? ?? '',
     );
   }
 }

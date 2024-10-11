@@ -6,11 +6,15 @@ class Repository {
   final String url =
       'https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=421f2580c9664c9b8fe1069decdd9b83';
   Future<NewsRes> fetchNews() async {
-    final response = await dio.get(url);
-    if (response.statusCode == 200) {
-      return NewsRes.fromMap(response.data);
-    } else {
-      throw Exception('Failed to load data ');
+    try {
+      final response = await dio.get(url);
+      if (response.statusCode == 200) {
+        return NewsRes.fromMap(response.data);
+      } else {
+        throw Exception('Failed to load data: ${response.statusCode}');
+      }
+    } catch (e) {
+      throw Exception('Failed to load data: $e');
     }
   }
 }
